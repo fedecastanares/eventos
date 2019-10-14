@@ -40,10 +40,11 @@ const CardGlobal = () => {
         <Fragment>
             <EventosProvider>
                 <CategoriasProvider>
+                  <div className="Header">
                     <Header 
-                       brand="Buscador de eventos"
-                         color="transparent"
+                        brand="Buscador de eventos"
                       />
+                  </div>
                       <div className="padding-10">
                         <Card className={classes.textCenter}>
                            <CardHeader color="danger">
