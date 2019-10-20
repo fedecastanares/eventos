@@ -41,7 +41,6 @@ class Formulario extends Component {
                     value.obtenerEventos(this.state)
                 }}>
             <GridContainer
-                container="true"
                 direction="row"
                 justify="center"
                 alignItems="center"
