@@ -33,7 +33,6 @@ class Formulario extends Component {
         this.setState({
             [e.target.name] : e.target.value
         })
-        console.log("OnChange");
     }
 
 
@@ -90,7 +89,7 @@ class Formulario extends Component {
                                         {(value) => {
                                             return (
                                                 value.categorias.map(categoria => (
-                                                    <MenuItem value={categoria.id}>
+                                                    <MenuItem key={categoria.id} value={categoria.id}>
                                                         {categoria.name_localized}
                                                     </MenuItem>
                                                 ))
@@ -107,7 +106,6 @@ class Formulario extends Component {
                     <option value="">-- Seleccione Categoria </option>
                         <CategoriasConsumer>
                             {(value) => {
-                                console.log(value);
                                 return (
                                     value.categorias.map(categoria => (
                                         <option key={categoria.id} value={categoria.id}>{categoria.name_localized}
