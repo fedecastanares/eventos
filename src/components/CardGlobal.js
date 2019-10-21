@@ -42,10 +42,12 @@ const CardGlobal = () => {
                 <CategoriasProvider>
                   <div className="Header">
                     <Header 
+                        className="header"
                         brand="Buscador de eventos"
+                        color="transparent"
                       />
                   </div>
-                      <div className="padding-10">
+                      <div className="padding-10 subir">
                         <Card className={classes.textCenter}>
                            <CardHeader color="danger">
                                <Formulario />

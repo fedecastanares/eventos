@@ -1,20 +1,25 @@
 import React , { Component } from 'react';
 
 // material-ui components
-import InputAdornment from "@material-ui/core/InputAdornment";
 import Button from 'components/CustomButtons/Button.js';
 
 
 // @material-ui/icons
-import Search from "@material-ui/icons/Search";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
 //import CustomDropdown from 'components/CustomDropdown/CustomDropdown.js';
 
 import {CategoriasConsumer} from '../context/categoriasContext';
 import {EventosConsumer} from '../context/EventosContext';
+
+import TextField from '@material-ui/core/TextField';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+
+
 
 class Formulario extends Component {
     state = { 
@@ -23,22 +28,28 @@ class Formulario extends Component {
      }
 
 
+
     obtenerDatosEvento = e => {
         this.setState({
             [e.target.name] : e.target.value
         })
-
+        console.log("OnChange");
     }
+
+
+    
 
     render() { 
         return (
             <EventosConsumer>
                 {(value) => {
                     return( 
-            <form 
+                    <form 
+                    id='form'
                 onSubmit={(e) => {
                     e.preventDefault();
-                    value.obtenerEventos(this.state)
+                    value.obtenerEventos(this.state);
+                    document.getElementById("form").reset();
                 }}>
             <GridContainer
                 direction="row"
@@ -46,28 +57,55 @@ class Formulario extends Component {
                 alignItems="center"
                 spacing={5}> 
                 <GridItem xs={12} sm={6}>
-                <CustomInput
-                labelText="Nombre o categoria"
-                id="nombre"
-                formControlProps={{
-                    fullWidth: true
-                }}
-                inputProps={{
-                    endAdornment: (<InputAdornment position="end"><Search/></InputAdornment>)
-                }}
-                onChange={this.obtenerDatosEvento}
-                ></CustomInput>
+                <TextField 
+                    fullWidth='true' 
+                    id="outlined-dense"
+                    name='nombre' 
+                    type='text'
+                    label='Nombre de evento o Ciudad'
+                    variant="outlined"
+                    onChange={this.obtenerDatosEvento}
+                    />
                 </GridItem>
 
 
                 <GridItem xs={12} sm={3}>
-                    <select 
+                    <FormControl fullWidth='true'>
+                        <InputLabel  htmlFor="categoria">
+                        Categorias
+                        </InputLabel>
+                        <Select
+                        value={this.categoria}
+                        onChange={this.obtenerDatosEvento}
+                        inputProps={{
+                            name: 'categoria',
+                            id: 'categoria',
+                        }}
+                        >
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+                            <MenuItem value={101}>Musica Manual</MenuItem>
+                            <CategoriasConsumer>
+                                        {(value) => {
+                                            return (
+                                                value.categorias.map(categoria => (
+                                                    <MenuItem value={categoria.id}>
+                                                        {categoria.name_localized}
+                                                    </MenuItem>
+                                                ))
+                                            )
+                                        }}
+                            </CategoriasConsumer>
+                        </Select>
+                        <select 
                     name="categoria"
                     onChange={this.obtenerDatosEvento}
                     >
                     <option value="">-- Seleccione Categoria </option>
                         <CategoriasConsumer>
                             {(value) => {
+                                console.log(value);
                                 return (
                                     value.categorias.map(categoria => (
                                         <option key={categoria.id} value={categoria.id}>{categoria.name_localized}
@@ -77,6 +115,7 @@ class Formulario extends Component {
                             }}
                         </CategoriasConsumer>
                     </select>
+                    </FormControl>
                 </GridItem>
                 
                 <GridItem xs={12} sm={3}>
@@ -95,20 +134,3 @@ class Formulario extends Component {
 }
  
 export default Formulario;
-
-/*
- DROPDOWN
-
- <CustomDropdown
-                    hoverColor="black"
-                    name="categoria"
-                    buttonText="Categorias"
-                    buttonProps={{
-                        fullWidth: true
-                      }}
-                    dropdownList={[
-                    "Opciones"
-                    ]}
-                    
-                />
-*/

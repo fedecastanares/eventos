@@ -13,12 +13,15 @@ class CategoriasProvider extends Component {
         categorias : []
     }
 
+
     componentDidMount(){
         this.obtenerCategorias();
     }
 
+
+
     obtenerCategorias = async () => {
-        let url =`https://www.eventbriteapi.com/v3/categories/?token=${this.token}&locale=es_ES`;
+        let url =`https://www.eventbriteapi.com/v3/categories/?token=${this.token}`;
 
         let categorias = await axios.get(url);
 
@@ -27,9 +30,10 @@ class CategoriasProvider extends Component {
         })
     }
 
+
+
     render() {
         return (
-            <div>
                 <CategoriasContext.Provider
                     value={{
                         categorias : this.state.categorias
@@ -37,7 +41,6 @@ class CategoriasProvider extends Component {
                 >    
                     {this.props.children}
                 </CategoriasContext.Provider>
-            </div>
         );
     }
 }
