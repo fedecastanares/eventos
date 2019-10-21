@@ -45,7 +45,8 @@ class Formulario2 extends Component {
                                     ))
                                 )
                             }}
-                        </CategoriasConsumer></select>
+                        </CategoriasConsumer>
+                    </select>
 
                 
                 <input type='submit' value='Buscar'/>

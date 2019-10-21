@@ -98,6 +98,8 @@ class Formulario extends Component {
                                         }}
                             </CategoriasConsumer>
                         </Select>
+
+                        {/* Este Select es el que funciona */}
                         <select 
                     name="categoria"
                     onChange={this.obtenerDatosEvento}
