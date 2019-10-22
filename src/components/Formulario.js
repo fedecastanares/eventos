@@ -57,6 +57,7 @@ class Formulario extends Component {
                 spacing={5}> 
                 <GridItem xs={12} sm={6}>
                 <TextField 
+                    autoComplete="off"
                     fullWidth='true' 
                     id="outlined-dense"
                     name='nombre' 
