@@ -21,7 +21,6 @@ class EventosProvider extends Component {
         };
         
         let bodyParameters = {
-           key: "value"
         }       
         const eventos = await axios(url, bodyParameters, config);
         this.setState({
