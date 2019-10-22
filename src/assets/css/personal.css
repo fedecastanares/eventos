@@ -1,0 +1,36 @@
+body{
+    background-color: whitesmoke;
+}
+
+.Header{
+background-color: #000022;
+background-image: url("../img/Vanishing-Stripes.svg");
+background-attachment: fixed;
+background-size: cover;
+padding-bottom: 13rem;
+}
+
+.subir{
+    margin-top: -12rem;
+}
+.padding-10{
+    padding-top: 1rem;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.firma{
+    padding-right: 15px;
+    text-align: end;
+    color: darkgray;
+}
+
+.just-center {
+    justify-content: center;
+}
+
+.formcontrol{
+    min-width: 25rem;
+}
+
+
