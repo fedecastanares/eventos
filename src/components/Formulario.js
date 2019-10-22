@@ -85,8 +85,11 @@ class Formulario extends Component {
                             <MenuItem value="">
                                 <em>None</em>
                             </MenuItem>
+                            {/* El MenuItem Musica manual funciona, pero los cargados con el arreglo no 
+                            doc: https://material-ui.com/es/components/selects/   y la api https://material-ui.com/es/api/menu-item/#menuitem-api */}
                             <MenuItem value={101}>Musica Manual</MenuItem>
                             <CategoriasConsumer>
+                                        {/* En el HTML el de arriba tiene las propiedades role:option y el value es data-value, y el de abajo role:menuoption y value */}
                                         {(value) => {
                                             return (
                                                 value.categorias.map(categoria => (
