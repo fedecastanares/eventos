@@ -93,7 +93,7 @@ class Formulario extends Component {
                                         {(value) => {
                                             return (
                                                 value.categorias.map(categoria => (
-                                                    <MenuItem key={categoria.id} value={categoria.id}>
+                                                    <MenuItem value={categoria.id} key={categoria.id} role='option' data-value={categoria.id}>
                                                         {categoria.name_localized}
                                                     </MenuItem>
                                                 ))
