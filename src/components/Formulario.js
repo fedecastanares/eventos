@@ -30,15 +30,26 @@ class Formulario extends Component {
 
 
     obtenerDatosEvento = e => {
+        console.log("ObtenerDatosEvento ejecutandose")
         this.setState({
             [e.target.name] : e.target.value
         })
     }
 
     insertarMenuItems() {
-        console.log("insetar menu")
-    }
-    
+        return(
+        <CategoriasConsumer>
+            {(value) => {
+                return (
+                    value.categorias.map(categoria => (
+                    <MenuItem key={categoria.id} value={categoria.id}>
+                        {categoria.name_localized}
+                    </MenuItem>
+                    ))
+                )
+            }}
+        </CategoriasConsumer>
+    )}
 
     render() { 
         return (
@@ -78,8 +89,7 @@ class Formulario extends Component {
                         </InputLabel>
                             <Select
                                 value={this.state.categoria}
-                                onChange={this.handleChangeDivision}
-                                onClose={this.state.categoria}
+                                onChange={this.obtenerDatosEvento}
                             >   {this.insertarMenuItems()}
                             </Select>
                     </FormControl>
