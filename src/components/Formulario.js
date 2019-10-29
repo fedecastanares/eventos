@@ -35,7 +35,9 @@ class Formulario extends Component {
         })
     }
 
-
+    insertarMenuItems() {
+        console.log("insetar menu")
+    }
     
 
     render() { 
@@ -74,51 +76,12 @@ class Formulario extends Component {
                         <InputLabel  htmlFor="categoria">
                         Categorias
                         </InputLabel>
-                        <Select
-                        value={this.categoria}
-                        onChange={this.obtenerDatosEvento}
-                        inputProps={{
-                            name: 'categoria',
-                            id: 'categoria',
-                        }}
-                        >
-                            <MenuItem value="">
-                                <em>None</em>
-                            </MenuItem>
-                            {/* El MenuItem Musica manual funciona, pero los cargados con el arreglo no 
-                            doc: https://material-ui.com/es/components/selects/   y la api https://material-ui.com/es/api/menu-item/#menuitem-api */}
-                            <MenuItem value={101}>Musica Manual</MenuItem>
-                            <CategoriasConsumer>
-                                        {/* En el HTML el de arriba tiene las propiedades role:option y el value es data-value, y el de abajo role:menuoption y value */}
-                                        {(value) => {
-                                            return (
-                                                value.categorias.map(categoria => (
-                                                    <MenuItem value={categoria.id} key={categoria.id} role='option' data-value={categoria.id}>
-                                                        {categoria.name_localized}
-                                                    </MenuItem>
-                                                ))
-                                            )
-                                        }}
-                            </CategoriasConsumer>
-                        </Select>
-
-                        {/* Este Select es el que funciona */}
-                        <select 
-                    name="categoria"
-                    onChange={this.obtenerDatosEvento}
-                    >
-                    <option value="">-- Seleccione Categoria </option>
-                        <CategoriasConsumer>
-                            {(value) => {
-                                return (
-                                    value.categorias.map(categoria => (
-                                        <option key={categoria.id} value={categoria.id}>{categoria.name_localized}
-                                            </option>
-                                    ))
-                                )
-                            }}
-                        </CategoriasConsumer>
-                    </select>
+                            <Select
+                                value={this.state.categoria}
+                                onChange={this.handleChangeDivision}
+                                onClose={this.state.categoria}
+                            >   {this.insertarMenuItems()}
+                            </Select>
                     </FormControl>
                 </GridItem>
                 
